@@ -1,0 +1,15 @@
+{
+  "name": "dogtools",
+  "version": "1.0.0",
+  "description": "many personal tools to make my life easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cls && node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
