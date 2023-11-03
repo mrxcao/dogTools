@@ -1,21 +1,11 @@
-const readline = require('readline-sync');
-const boxTrap = require("./modules/boxTrape")
-
-const start  = async () => {
-    console.log("opções: \n"
-    ,1, "formatar texto boxTrap")    
-    const opt = readline.question('===>: ');    
-    let resp
-    switch (  parseInt(opt)) {
-        case 1:
-            const texto = readline.question('Cole o texto: ');    
-            resp = await boxTrap.makeText(texto)
-            console.log('resp',resp);
-            break;
-        default:
-            break;
-    }
-    console.log('Resp: \n\n',resp, '\n\n');
-    
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').config();
 }
-start()
+const loaders = require('./classes/Loaders');
+const pack = require('./package.json');
+
+loaders.init().then(() => {
+  console.log(`Pronto! ${pack.name} ver:${pack.version}  localhost:${process.env.PORT}  ${process.env.NODE_ENV} `);    
+});
+
+

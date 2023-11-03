@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cls && node index.js",
+    "dev": "cls && nodemon index.js",
     "startServer": "cls && nodemon --ignore node-modules/ --ignore tests/ --ignore docs/ --ignore 'lib/*.zip' server/index.js "
   },
   "author": "",
@@ -16,8 +17,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-jwt": "^8.4.1",
-    "less-middleware": "^3.1.0",
-    "readline-sync": "^1.4.10"
+    "less-middleware": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "^8.52.0",

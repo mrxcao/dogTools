@@ -13,6 +13,7 @@ const compression = require('compression');
 
 // const atob = require('atob');
 const key = process.env.AUTH_KEY;
+const port = process.env.PORT;
 const isRevokedCallback = require('./isRevokedCallback');
 
 const { expressjwt: jwt } = require('express-jwt');
@@ -41,6 +42,7 @@ const consultaRotas = async (ip, token) => {
 
 };
 */
+
 
 const existeHost = async (dadosToken, ip) => {
 	// console.log('existeHost ip', ip, dadosToken);
@@ -130,7 +132,7 @@ const rotaAutorizada = async (req) => {
 };
 */
 
-
+const init = async()=> {
 app.use(express.json());
 
 app.use(bodyParser.json());
@@ -138,6 +140,8 @@ app.use(bodyParser.urlencoded());
 
 
 app.use(compression());
+
+/*
 app.use(cors({ preflightContinue: true }));
 // app.use(cors(corsOptionsDelegate));
 
@@ -147,7 +151,7 @@ app.use(jwt({
 	isRevoked: isRevokedCallback,
 }).unless({ path:publicRoutes }),
 );
-
+*/
 
 app.use(function(req, res, next) {
 	// console.log('app.use(function(req ', req.rawHeaders);
@@ -177,4 +181,9 @@ app.use('/', routerIndex);
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-module.exports = app;
+app.listen(port, () => {
+	
+  })
+}
+
+module.exports = {init};
