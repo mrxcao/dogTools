@@ -181,8 +181,14 @@ app.use('/', routerIndex);
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(port, () => {
-	
+
+// ejs server
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+
+
+
+app.listen(port, () => {	
   })
 }
 
