@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bpoxTrap = require('../modules/boxTrap');
+const boxTrap = require('../modules/boxTrap');
+const crypt = require('../modules/crypt');
 // eslint-disable-next-line no-unused-vars
 
 router.get('/', function(req, res) {
@@ -20,13 +21,21 @@ router.post('/post', async (req, res) => {
 });
 router.post('/boxTrapText', async (req, resp) => {
 	try {
-		const res = await bpoxTrap.makeText(req.body.texto);
+		const res = await boxTrap.makeText(req.body.texto);
 		resp.send(res);
 	}
 	catch (error) {
 		resp.status(500).send(error);
 	}
 });
-
+router.post('/decode', async (req, resp) => {
+	try {
+		const res = await crypt.decode(req.body.texto);
+		resp.send(res);
+	}
+	catch (error) {
+		resp.status(500).send(error);
+	}
+});
 module.exports = router;
 

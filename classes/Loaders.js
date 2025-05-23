@@ -1,6 +1,6 @@
 const server_ = require('../server/init');
 class Loaders {
-	async init() {		
+	async init() {
 		await server_.init();
 	}
 
